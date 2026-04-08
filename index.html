@@ -7,120 +7,110 @@
 <style>
 
 body{
-    font-family: "Segoe UI", Arial, sans-serif;
-    margin:0;
-    background:#f6f8fa;
-    color:#24292e;
+font-family:"Segoe UI",Arial,sans-serif;
+margin:0;
+background:#f6f8fa;
+color:#24292e;
 }
 
 header{
-    background:#0d1117;
-    color:white;
-    padding:30px;
+background:#0d1117;
+color:white;
+padding:30px;
 }
 
-header h1{
-    margin:0;
-    font-size:32px;
-}
+header h1{margin:0;font-size:32px;}
 
-header p{
-    margin-top:8px;
-    color:#c9d1d9;
-}
+header p{color:#c9d1d9;margin-top:8px;}
 
-.container{
-    display:flex;
-}
+.container{display:flex;}
 
 .sidebar{
-    width:260px;
-    background:white;
-    padding:25px;
-    border-right:1px solid #e1e4e8;
-    height:100vh;
-    position:sticky;
-    top:0;
+width:260px;
+background:white;
+padding:25px;
+border-right:1px solid #e1e4e8;
+height:100vh;
+position:sticky;
+top:0;
 }
 
 .sidebar h3{
-    font-size:14px;
-    color:#57606a;
-    text-transform:uppercase;
+font-size:14px;
+color:#57606a;
+text-transform:uppercase;
 }
 
 .sidebar a{
-    display:block;
-    padding:6px 0;
-    color:#0969da;
-    text-decoration:none;
+display:block;
+padding:6px 0;
+color:#0969da;
+text-decoration:none;
 }
 
-.sidebar a:hover{
-    text-decoration:underline;
-}
+.sidebar a:hover{text-decoration:underline;}
 
 .content{
-    padding:40px;
-    max-width:1100px;
+padding:40px;
+max-width:1100px;
 }
 
 h2{
-    border-bottom:1px solid #eaecef;
-    padding-bottom:8px;
-    margin-top:40px;
+border-bottom:1px solid #eaecef;
+padding-bottom:8px;
+margin-top:40px;
 }
 
 .card{
-    background:white;
-    padding:20px;
-    margin-top:15px;
-    border-radius:8px;
-    border:1px solid #e1e4e8;
+background:white;
+padding:20px;
+margin-top:15px;
+border-radius:8px;
+border:1px solid #e1e4e8;
 }
 
 pre{
-    background:#0d1117;
-    color:#e6edf3;
-    padding:18px;
-    border-radius:6px;
-    overflow:auto;
+background:#0d1117;
+color:#e6edf3;
+padding:18px;
+border-radius:6px;
+overflow:auto;
 }
 
 .arch{
-    background:#f0f6ff;
-    padding:20px;
-    border-left:4px solid #0969da;
+background:#f0f6ff;
+padding:20px;
+border-left:4px solid #0969da;
+}
+
+.table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+.table th,.table td{
+border:1px solid #eaecef;
+padding:10px;
 }
 
 .badge{
-    display:inline-block;
-    padding:5px 10px;
-    border-radius:4px;
-    font-size:12px;
-    margin-right:5px;
+display:inline-block;
+padding:5px 10px;
+border-radius:4px;
+font-size:12px;
+margin-right:6px;
 }
 
 .critical{background:#ffebe9;color:#cf222e;}
 .major{background:#fff8c5;color:#9a6700;}
 .minor{background:#dafbe1;color:#1a7f37;}
 
-.table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:10px;
-}
-
-.table th,.table td{
-    border:1px solid #eaecef;
-    padding:10px;
-}
-
 .footer{
-    margin-top:60px;
-    padding:20px;
-    text-align:center;
-    color:#57606a;
+margin-top:60px;
+padding:20px;
+text-align:center;
+color:#57606a;
 }
 
 </style>
@@ -130,22 +120,26 @@ pre{
 
 <header>
 <h1>AI Pull Request Review Agent</h1>
-<p>Architecture, Requirement and Solution Design</p>
+<p>Requirement and Solution Architecture</p>
 </header>
 
 <div class="container">
 
 <div class="sidebar">
+
 <h3>Documentation</h3>
+
 <a href="#overview">Overview</a>
 <a href="#requirements">Requirements</a>
+<a href="#rules">Review Rules</a>
 <a href="#architecture">Architecture</a>
 <a href="#workflow">Workflow</a>
 <a href="#components">Components</a>
 <a href="#llm">LLM Support</a>
-<a href="#review">Review Format</a>
+<a href="#review">Review Output</a>
 <a href="#apis">GitHub APIs</a>
 <a href="#structure">Project Structure</a>
+
 </div>
 
 <div class="content">
@@ -154,33 +148,110 @@ pre{
 <h2>Overview</h2>
 
 <div class="card">
+
 <p>
-The AI PR Review Agent is an automated system that analyzes GitHub Pull Requests using Large Language Models (LLMs).  
-The agent reviews code changes, identifies issues, and posts structured feedback directly on the Pull Request.
+The AI PR Review Agent is an automated system that reviews GitHub Pull Requests using Large Language Models (LLMs).
 </p>
 
 <p>
-The system supports multiple LLM providers and runs locally as a Python-based automation tool.
+The agent analyzes code changes, applies engineering review rules, generates feedback, and posts review comments on the Pull Request.
 </p>
+
+<p>
+The system is designed to run locally using Python scripts and supports multiple LLM providers.
+</p>
+
 </div>
 </section>
 
 
+
 <section id="requirements">
+
 <h2>Functional Requirements</h2>
 
 <div class="card">
+
 <ul>
+
 <li>Read GitHub Pull Requests using GitHub token authentication.</li>
+
 <li>Fetch changed files and code diffs.</li>
-<li>Send PR changes to LLM models for analysis.</li>
-<li>Generate AI-based code review.</li>
-<li>Provide severity classification.</li>
-<li>Post inline comments on specific code lines.</li>
-<li>Post a summary review comment on the PR.</li>
-<li>Support multiple LLM providers.</li>
-<li>Run locally using Python scripts on Windows machines.</li>
+
+<li>Send code changes to LLM models for analysis.</li>
+
+<li>Apply review rules such as:</li>
+
+<ul>
+<li>Coding standards validation</li>
+<li>Architecture guideline enforcement</li>
+<li>Performance checks</li>
+<li>Security checks</li>
 </ul>
+
+<li>Generate AI-based code review.</li>
+
+<li>Classify issues by severity (Critical, Major, Minor).</li>
+
+<li>Post inline comments on specific lines.</li>
+
+<li>Post a summary review comment on the PR.</li>
+
+<li>Support multiple LLM providers.</li>
+
+<li>Run locally on a Windows machine using Python scripts.</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+
+<section id="rules">
+
+<h2>Review Rules</h2>
+
+<div class="card">
+
+<p>
+During analysis, the PR Review Agent applies engineering review rules to detect potential problems and improvements.
+</p>
+
+<h3>Coding Standards</h3>
+
+<ul>
+<li>Variable naming conventions</li>
+<li>Code readability</li>
+<li>Method size and complexity</li>
+<li>Proper error handling</li>
+</ul>
+
+<h3>Architecture Guidelines</h3>
+
+<ul>
+<li>Controllers should not contain business logic</li>
+<li>Service layers should manage business rules</li>
+<li>Avoid circular dependencies</li>
+</ul>
+
+<h3>Performance Checks</h3>
+
+<ul>
+<li>Avoid database queries inside loops</li>
+<li>Detect inefficient data processing</li>
+<li>Prevent unnecessary object creation</li>
+</ul>
+
+<h3>Security Checks</h3>
+
+<ul>
+<li>Detect SQL injection risks</li>
+<li>Prevent hardcoded secrets</li>
+<li>Ensure safe input validation</li>
+</ul>
+
 </div>
 
 </section>
@@ -221,8 +292,9 @@ LLM Router
         ▼
 Review Engine
         │
-        ├── Summary Generator
-        └── Inline Comment Generator
+        ├── Rule Evaluation
+        ├── Summary Generation
+        └── Inline Comment Generation
         │
         ▼
 GitHub Review Publisher
@@ -234,6 +306,7 @@ GitHub Review Publisher
 </section>
 
 
+
 <section id="workflow">
 
 <h2>Processing Workflow</h2>
@@ -242,14 +315,19 @@ GitHub Review Publisher
 
 <pre>
 
-1. User provides GitHub PR URL
-2. Script authenticates using GitHub Token
-3. Fetch PR details and file changes
-4. Build LLM review prompt
-5. Send diff content to selected LLM
-6. Generate AI review feedback
-7. Produce summary + inline comments
-8. Post review back to GitHub PR
+1. Provide GitHub Pull Request URL
+2. Authenticate using GitHub token
+3. Fetch PR files and diff
+4. Build review context
+5. Apply review rules
+   - coding standards
+   - architecture guidelines
+   - performance checks
+   - security checks
+6. Send analysis request to LLM
+7. Generate review insights
+8. Create summary + inline comments
+9. Publish review to GitHub PR
 
 </pre>
 
@@ -258,9 +336,10 @@ GitHub Review Publisher
 </section>
 
 
+
 <section id="components">
 
-<h2>Core System Components</h2>
+<h2>Core Components</h2>
 
 <div class="card">
 
@@ -273,7 +352,7 @@ GitHub Review Publisher
 
 <tr>
 <td>GitHub Adapter</td>
-<td>Handles authentication and API interaction with GitHub</td>
+<td>Handles authentication and API communication with GitHub</td>
 </tr>
 
 <tr>
@@ -283,22 +362,22 @@ GitHub Review Publisher
 
 <tr>
 <td>Context Builder</td>
-<td>Prepares structured prompts for LLM analysis</td>
+<td>Builds structured prompt for LLM review</td>
 </tr>
 
 <tr>
 <td>LLM Router</td>
-<td>Selects the configured LLM provider</td>
+<td>Routes requests to selected LLM provider</td>
 </tr>
 
 <tr>
 <td>Review Engine</td>
-<td>Generates summary review and inline comments</td>
+<td>Applies rules and generates review feedback</td>
 </tr>
 
 <tr>
 <td>Review Publisher</td>
-<td>Posts review results back to GitHub PR</td>
+<td>Posts summary and inline comments to GitHub</td>
 </tr>
 
 </table>
@@ -316,13 +395,17 @@ GitHub Review Publisher
 <div class="card">
 
 <ul>
-<li>OpenAI (GPT models)</li>
+
+<li>OpenAI</li>
 <li>Google Gemini</li>
 <li>Anthropic Claude</li>
-<li>AWS Bedrock models</li>
+<li>AWS Bedrock Models</li>
+
 </ul>
 
-<p>The architecture uses a provider abstraction layer to enable easy switching between models.</p>
+<p>
+The architecture uses a provider abstraction layer allowing the system to switch between models without changing the core logic.
+</p>
 
 </div>
 
@@ -332,17 +415,13 @@ GitHub Review Publisher
 
 <section id="review">
 
-<h2>Review Output Format</h2>
+<h2>Review Output</h2>
 
 <div class="card">
-
-<h3>Issue Severity</h3>
 
 <span class="badge critical">Critical</span>
 <span class="badge major">Major</span>
 <span class="badge minor">Minor</span>
-
-<h3 style="margin-top:20px">Example Summary</h3>
 
 <pre>
 
@@ -350,18 +429,15 @@ AI PR Review Summary
 
 Critical Issues
 ---------------
-1. Possible NullPointerException detected
-2. SQL injection risk in query builder
+Null pointer risk in PaymentService
 
 Major Improvements
 ------------------
-1. Business logic detected in controller
-2. N+1 database query pattern
+Database query inside loop
 
 Minor Suggestions
 -----------------
-1. Improve variable naming
-2. Add logging context
+Improve variable naming
 
 </pre>
 
@@ -377,13 +453,13 @@ Minor Suggestions
 
 <div class="card">
 
-<h3>Fetch Pull Request Files</h3>
+<h3>Fetch PR Files</h3>
 
 <pre>
 GET /repos/{owner}/{repo}/pulls/{pr}/files
 </pre>
 
-<h3>Create Pull Request Review</h3>
+<h3>Create Review</h3>
 
 <pre>
 POST /repos/{owner}/{repo}/pulls/{pr}/reviews
@@ -431,7 +507,7 @@ pr-review-agent
 
 
 <div class="footer">
-AI PR Review Agent Documentation
+AI PR Review Agent – Architecture Documentation
 </div>
 
 </div>
