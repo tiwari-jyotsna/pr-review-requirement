@@ -223,27 +223,79 @@ This tool automates the first pass of PR reviews by analyzing code diffs and app
 
 <h2 id="how">How It Works</h2>
 
-<div class="pipeline">
+<style>
+.flow-container{
+  background:#0f172a;
+  color:#e2e8f0;
+  padding:40px;
+  border-radius:14px;
+  font-family:monospace;
+  font-size:15px;
+  max-width:520px;
+}
 
-GitHub PR URL  
-↓  
-Fetch PR files via GitHub API  
-↓  
-Chunk large diffs into LLM-friendly segments  
-↓  
-Build prompt using engineering rules  
-↓  
-Send chunks to selected LLM provider  
-↓  
-Receive structured JSON review  
-↓  
-Filter and snap comments to valid diff lines  
-↓  
-Deduplicate previous reviews  
-↓  
-Post inline comments + summary to GitHub  
+.flow-step{
+  display:flex;
+  flex-direction:column;
+}
 
+.flow-box{
+  padding:6px 0;
+}
+
+.flow-line{
+  color:#94a3b8;
+  margin-left:8px;
+}
+
+.flow-arrow{
+  color:#60a5fa;
+  margin-left:4px;
+}
+</style>
+
+<div class="flow-container">
+  <div class="flow-step">
+
+```
+<div class="flow-box">GitHub PR URL</div>
+<div class="flow-line">│</div>
+<div class="flow-arrow">▼</div>
+
+<div class="flow-box">Fetch PR files via GitHub API</div>
+<div class="flow-line">│</div>
+<div class="flow-arrow">▼</div>
+
+<div class="flow-box">Chunk large diffs into LLM-friendly segments</div>
+<div class="flow-line">│</div>
+<div class="flow-arrow">▼</div>
+
+<div class="flow-box">Build prompt using engineering rules</div>
+<div class="flow-line">│</div>
+<div class="flow-arrow">▼</div>
+
+<div class="flow-box">Send chunks to selected LLM provider</div>
+<div class="flow-line">│</div>
+<div class="flow-arrow">▼</div>
+
+<div class="flow-box">Receive structured JSON review</div>
+<div class="flow-line">│</div>
+<div class="flow-arrow">▼</div>
+
+<div class="flow-box">Filter and snap comments to valid diff lines</div>
+<div class="flow-line">│</div>
+<div class="flow-arrow">▼</div>
+
+<div class="flow-box">Deduplicate previous reviews</div>
+<div class="flow-line">│</div>
+<div class="flow-arrow">▼</div>
+
+<div class="flow-box">Post inline comments + summary to GitHub</div>
+```
+
+  </div>
 </div>
+
 
 <h2 id="features">Features</h2>
 
