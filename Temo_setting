@@ -47,3 +47,29 @@ Frequency → Weekly (Friday evening)
 Recipients → Managers
 
 👉 Managers now see defaulters automatically
+
+
+
+
+📊 Timesheet Automation Options Comparison
+Option	Approach	Features	Effort	Code Required	Cost	Scalability	Accuracy (Defaulter Detection)	Best For
+1	Jira Automation Only	Basic reminders (email/Slack), scheduled nudges	⭐ Low	❌ No	✅ Free (included)	⚠️ Limited	❌ Low (no direct Tempo data)	Small teams / quick start
+2	Tempo Timesheets Native Setup	Approval workflow, built-in reminders, reports	⭐⭐ Low-Medium	❌ No	💰 Already licensed	✅ Good	⚠️ Medium (report-based)	Most teams (recommended baseline)
+3	Tempo + Slack Integration	Team reminders, visibility, peer pressure	⭐⭐ Low-Medium	❌ No	💰 Free/Existing	✅ Good	❌ Low (generic reminders)	Culture-driven teams
+4	Tempo + Zapier / Make	Targeted reminders (only defaulters), automation workflows	⭐⭐⭐ Medium	❌ No-code	💰 Paid (₹2K–₹5K/month approx)	✅ High	✅ High	Growing teams needing smart automation
+5	Tempo API + Custom Script	Fully automated detection, smart nudges, escalation	⭐⭐⭐⭐ High	✅ Yes	💰 Infra cost (low)	🚀 Very High	✅ Very High	Mature engineering org
+6	Hard Enforcement (Policy-based)	Blocking leave/sprint, performance linkage	⭐⭐ Medium	❌ No	✅ Free	🚀 Very High	✅ Very High	Strict org / compliance-heavy
+🧠 Straight Recommendation (No-Code Only)
+
+Since you said No-Code, here’s the honest ranking:
+
+🥇 Best Practical Setup
+
+👉 Option 2 + Option 3 combined
+
+Tempo reminders + reports
+Slack team nudges
+
+✔ Zero effort
+✔ No cost
+✔ 80–90% problem solved
