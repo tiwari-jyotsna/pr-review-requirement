@@ -1,0 +1,49 @@
+COMPLETE STEP-BY-STEP (Option 2 + 3)
+🔹 PART 1: Tempo Setup (Foundation)
+✅ 1. Enable Weekly Timesheet Approval
+
+Path:
+Jira Settings → Apps → Tempo → Timesheets → Approval
+
+Period → Weekly
+Start → Monday
+Enable:
+✔ Require submission
+✔ Require approval
+✅ 2. Set Submission Deadline
+
+Path:
+Tempo → Settings → Timesheets
+
+Deadline → Friday 6 PM
+
+👉 This is your anchor for all automation
+
+✅ 3. Configure Tempo Reminders
+
+Path:
+Tempo → Settings → Notifications
+
+Set:
+
+Reminder	When	Purpose
+Incomplete Reminder	Thursday 3 PM	Early nudge
+Final Reminder	Friday 12 PM	Urgency
+Overdue Reminder	Friday 6:30 PM	Escalation
+✅ 4. Create Manager Report
+
+Path:
+Tempo → Reports
+
+Report Type → Timesheet Report
+Group → User
+Period → Current week
+Metric → Logged hours
+
+👉 Save as: “Timesheet Compliance Report”
+
+✅ 5. Schedule Report
+Frequency → Weekly (Friday evening)
+Recipients → Managers
+
+👉 Managers now see defaulters automatically
